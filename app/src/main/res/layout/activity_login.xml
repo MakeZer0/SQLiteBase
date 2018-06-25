@@ -73,6 +73,12 @@
                 android:text="Logar"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/btnCadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CADASTRAR-SE" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
