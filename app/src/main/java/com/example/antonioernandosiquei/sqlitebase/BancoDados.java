@@ -12,10 +12,11 @@ import java.util.List;
 public class BancoDados extends SQLiteOpenHelper {
 
     private static final int VERSAO_BANCO = 1;
-    private static final String BANCO_CLIENTE = "bd_usuarios";
+    private static final String BANCO_CLIENTE = "bd_sqlite";
 
     private static final String TABELA_CLIENTE = "tb_clientes";
     private static final String TABELA_ESTACAO = "tb_estacoes";
+    private static final String TABELA_SERVICOS = "tb_servicos";
 
     private static final String COLUNA_CODIGO = "codigo";
     private static final String COLUNA_NOME  = "nome";
@@ -26,6 +27,9 @@ public class BancoDados extends SQLiteOpenHelper {
     private static final String COLUNA_CIDADE = "cidade";
     private static final String COLUNA_LATITUDE = "latitude";
     private static final String COLUNA_LONGITUDE = "longitude";
+
+    private static final String COLUNA_TIPO = "tipo";
+    private static final String COLUNA_LOCALIZACAO = "localizacao";
 
 
     public BancoDados(Context context) {
@@ -44,11 +48,55 @@ public class BancoDados extends SQLiteOpenHelper {
                 + COLUNA_CODIGO + " INTEGER PRIMARY KEY, " + COLUNA_NOME + " TEXT, " + COLUNA_CIDADE + " TEXT, "
                 + COLUNA_LATITUDE + " REAL, " + COLUNA_LONGITUDE + " REAL)";
         db.execSQL(QUERY_COLUNA2);
+
+        String QUERY_COLUNA3 = "CREATE TABLE " + TABELA_SERVICOS + " ("
+                + COLUNA_CODIGO + " INTEGER PRIMARY KEY, " + COLUNA_TIPO + " INTEGER, " + COLUNA_NOME + " TEXT, "
+                + COLUNA_LOCALIZACAO + " TEXT)";
+        db.execSQL(QUERY_COLUNA3);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
+    }
+
+    public List<Servico> listaServicos(int tipo){
+        List<Servico> listaServicos = new ArrayList<Servico>();
+
+        String query = "SELECT * FROM " + TABELA_SERVICOS + " WHERE tipo = " + tipo + "";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor c = db.rawQuery(query,null);
+
+        if(c.moveToFirst()){
+            do{
+                Servico servico =  new Servico();
+                servico.setCodigo(Integer.parseInt(c.getString(0)));
+                servico.setTipo(Integer.parseInt(c.getString(1)));
+                servico.setNome(c.getString(2));
+                servico.setLocalização(c.getString(3));
+
+                listaServicos.add(servico);
+
+            } while (c.moveToNext());
+        }
+
+        return listaServicos;
+    }
+
+    void addServico(Servico servico){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_TIPO, servico.getTipo());
+        values.put(COLUNA_NOME, servico.getNome());
+        values.put(COLUNA_LOCALIZACAO, servico.getLocalização());
+
+
+        db.insert(TABELA_SERVICOS, null, values);
+        db.close();
     }
 
     void addEstacao(Estacao estacao){
@@ -218,5 +266,7 @@ public class BancoDados extends SQLiteOpenHelper {
 
         return listaClientes;
     }
+
+
 
 }

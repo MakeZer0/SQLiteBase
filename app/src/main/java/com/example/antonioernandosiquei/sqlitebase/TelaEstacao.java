@@ -1,10 +1,13 @@
 package com.example.antonioernandosiquei.sqlitebase;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +19,9 @@ public class TelaEstacao extends AppCompatActivity {
 
     BancoDados db = new BancoDados(this);
 
+    Button btnServicos;
+
+
     TextView textView1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,16 @@ public class TelaEstacao extends AppCompatActivity {
         textView1 = (TextView)findViewById(R.id.txtEstacao);
 
         Estacao estacao = db.buscarEstacao(Integer.parseInt(getIntent().getStringExtra("codigo")));
+
+        btnServicos = (Button)findViewById(R.id.btnServicos);
+
+        btnServicos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),TelaServicos.class);
+                startActivity(intent);
+            }
+        });
 
         textView1.setText(estacao.nome);
     }
