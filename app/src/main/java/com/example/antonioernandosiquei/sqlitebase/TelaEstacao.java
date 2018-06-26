@@ -19,7 +19,7 @@ public class TelaEstacao extends AppCompatActivity {
 
     BancoDados db = new BancoDados(this);
 
-    Button btnServicos;
+    Button btnServicos,btnMapa,btnComodidades;
 
 
     TextView textView1;
@@ -33,11 +33,29 @@ public class TelaEstacao extends AppCompatActivity {
         Estacao estacao = db.buscarEstacao(Integer.parseInt(getIntent().getStringExtra("codigo")));
 
         btnServicos = (Button)findViewById(R.id.btnServicos);
+        btnMapa = (Button)findViewById(R.id.btnMapa);
+        btnComodidades = (Button)findViewById(R.id.btnServicos);
 
         btnServicos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),TelaServicos.class);
+                startActivity(intent);
+            }
+        });
+
+        btnComodidades.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),TelaServicos.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),TelaMapa.class);
                 startActivity(intent);
             }
         });

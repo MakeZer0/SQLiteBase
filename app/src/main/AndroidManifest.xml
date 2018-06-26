@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TelaEstacao" />
-        <activity android:name=".TelaServicos"></activity>
+        <activity android:name=".TelaServicos" />
+        <activity android:name=".TelaMapa"></activity>
     </application>
 
 </manifest>
