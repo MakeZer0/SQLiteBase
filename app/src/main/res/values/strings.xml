@@ -16,4 +16,5 @@
         completions."
     </string>
     <string name="title_activity_tela_inicial">TelaInicial</string>
+    <string name="title_activity_login2">Sign in</string>
 </resources>
