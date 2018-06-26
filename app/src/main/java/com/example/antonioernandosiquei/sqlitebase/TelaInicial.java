@@ -1,9 +1,12 @@
 package com.example.antonioernandosiquei.sqlitebase;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -32,6 +35,24 @@ public class TelaInicial extends AppCompatActivity {
         /*Estacao estacao = new Estacao(5,"DNAS",12312312.,123123.21,"dsadas");
         db.apagarEstacao(estacao);*/
         listarEstacoes();
+
+        listViewEstacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String conteudo = (String) listViewEstacoes.getItemAtPosition(i);
+
+                //Toast.makeText(MainActivity.this,"Selecionado: " + conteudo, Toast.LENGTH_SHORT).show();
+                String codigo = conteudo.substring(0,conteudo.indexOf("-"));
+
+                Intent intent = new Intent(getApplicationContext(),TelaEstacao.class);
+                intent.putExtra("codigo",codigo);
+                startActivity(intent);
+
+               // Cliente cliente = db.selecionarCliente(Integer.parseInt(codigo));
+
+            }
+        });
 
 
     }

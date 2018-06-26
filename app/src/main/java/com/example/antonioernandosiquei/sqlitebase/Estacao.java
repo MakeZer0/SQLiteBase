@@ -8,12 +8,13 @@ public class Estacao {
     Double latitude;
     Double longitude;
 
-    public Estacao(int codigo, String nome, Double latitude, Double longitude, String cidade) {
+    public Estacao(int codigo, String nome,String cidade, Double latitude, Double longitude ) {
         this.codigo = codigo;
         this.nome = nome;
+        this.cidade = cidade;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.cidade = cidade;
+
     }
 
     public Estacao() {

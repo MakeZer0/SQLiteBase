@@ -75,6 +75,22 @@ public class BancoDados extends SQLiteOpenHelper {
 
     }
 
+    Estacao buscarEstacao(int codigo){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABELA_ESTACAO, new String[] { COLUNA_CODIGO,
+                        COLUNA_NOME, COLUNA_CIDADE, COLUNA_LATITUDE, COLUNA_LONGITUDE}, COLUNA_CODIGO + " = ?",
+                new String[] { String.valueOf(codigo)},null, null, null, null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+
+        Estacao estacao = new Estacao(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),Double.parseDouble(cursor.getString(3)),Double.parseDouble(cursor.getString(4)));
+
+        return estacao;
+
+    }
 
     public List<Estacao> listaTodasEstacoes(){
         List<Estacao> listaEstacoes = new ArrayList<Estacao>();

@@ -71,6 +71,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
+                android:divider="#b5b5b5"
+                android:dividerHeight="1dp"
+                android:listSelector="@layout/list_selector" />
                 android:cacheColorHint="@android:color/black" />
         </TableRow>
 
