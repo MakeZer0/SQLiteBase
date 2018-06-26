@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         for(Cliente c : clientes) {
-            //Log.d("Lista","\nID: " + c.getCodigo() + "Nome: " + c.getNome());
+            Log.d("Lista","\nID: " + c.getCodigo() + "Nome: " + c.getNome());
             arrayList.add(c.getCodigo() + "-" + c.getNome());
             adapter.notifyDataSetChanged();
         }
