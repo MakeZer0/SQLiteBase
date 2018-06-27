@@ -67,7 +67,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtEstacao"
+                    android:id="@+id/txtEstacao2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_blue_dark"
@@ -108,41 +108,54 @@
             android:layout_height="match_parent" >
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
 
-                <Button
+                <ImageButton
                     android:id="@+id/btnLanchonetes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icone_lanchonete"
                     android:text="lanchonetes" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/btnLojas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icone_lojas"
                     android:text="lojas" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/btnMaquinas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
+                    android:background="@null"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icone_maquinas"
                     android:text="maquinas" />
+
             </LinearLayout>
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
             <ListView
                 android:id="@+id/lstServicos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false" />
         </TableRow>
 
         <TableRow

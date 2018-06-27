@@ -1,5 +1,6 @@
 package com.example.antonioernandosiquei.sqlitebase;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,7 +8,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,18 +24,21 @@ public class TelaServicos extends AppCompatActivity {
     ListView listViewServicos;
     InputMethodManager imm;
 
-    Button btnLanchonetes, btnLojas, btnMaquinas;
+
+    ImageButton btnLanchonetes, btnLojas, btnMaquinas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_servicos);
+        TextView textView1;
 
         listViewServicos = (ListView)findViewById(R.id.lstServicos);
+        textView1 = (TextView)findViewById(R.id.txtEstacao2);
 
-        btnLanchonetes = (Button)findViewById(R.id.btnLanchonetes);
-        btnLojas = (Button)findViewById(R.id.btnLojas);
-        btnMaquinas = (Button)findViewById(R.id.btnMaquinas);
+        btnLanchonetes = (ImageButton)findViewById(R.id.btnLanchonetes);
+        btnLojas = (ImageButton)findViewById(R.id.btnLojas);
+        btnMaquinas = (ImageButton)findViewById(R.id.btnMaquinas);
 
         btnLanchonetes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +60,10 @@ public class TelaServicos extends AppCompatActivity {
                 listarServicos(3);
             }
         });
+
+       // Estacao estacao = db.buscarEstacao(Integer.parseInt(getIntent().getStringExtra("nome")));
+
+        textView1.setText(String.valueOf(getIntent().getStringExtra("nome")));
 
         //ADICIONAR LANCHONETE
         /*Servico servico = new Servico();

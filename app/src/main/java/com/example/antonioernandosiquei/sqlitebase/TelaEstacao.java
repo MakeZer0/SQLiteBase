@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,20 +35,30 @@ public class TelaEstacao extends AppCompatActivity {
 
         btnServicos = (Button)findViewById(R.id.btnServicos);
         btnMapa = (Button)findViewById(R.id.btnMapa);
-        btnComodidades = (Button)findViewById(R.id.btnServicos);
+        btnComodidades = (Button)findViewById(R.id.btnComodidades);
 
         btnServicos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                Estacao estacao = db.buscarEstacao(Integer.parseInt(getIntent().getStringExtra("codigo")));
+                //Toast.makeText(getApplicationContext(),"Selecionado: " + estacao.nome, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(),TelaServicos.class);
+                intent.putExtra("nome",estacao.nome);
                 startActivity(intent);
+
             }
         });
 
         btnComodidades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),TelaServicos.class);
+
+                Intent intent = new Intent(getApplicationContext(),MapsActivity.class);
+                intent.putExtra("latitude", "-23.6518136");
+                intent.putExtra("longitude", "-46.5287232");
+
                 startActivity(intent);
             }
         });
